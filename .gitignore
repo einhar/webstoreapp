@@ -78,3 +78,4 @@ fabric.properties
 
 #Added by user
 
+/src/main/webapp/WEB-INF/css/bootstrap.min.css
