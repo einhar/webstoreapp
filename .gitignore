@@ -79,3 +79,5 @@ fabric.properties
 #Added by user
 
 /src/main/webapp/WEB-INF/css/bootstrap.min.css
+/.idea/artifacts/webstore_war_exploded.xml
+/.idea/artifacts/webstore_war.xml
