@@ -88,7 +88,7 @@ public class InMemoryProductRepository implements ProductRepository {
                 productsByCategory.addAll(this.getProductsByCategory(category));
             }
         }
-        productsByCategory.retainAll(productsByBrand);
+
         return productsByCategory;
     }
 

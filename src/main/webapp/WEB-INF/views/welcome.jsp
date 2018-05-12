@@ -15,6 +15,8 @@
     <body>
         welcome.jsp body
         <br/>
-        <p>${greetings}</p>
+        <h2>${greetings}</h2>
+        <br/>
+        <p>${tagline}</p>
     </body>
 </html>
