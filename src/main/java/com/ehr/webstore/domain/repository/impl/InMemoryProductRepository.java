@@ -2,6 +2,7 @@ package com.ehr.webstore.domain.repository.impl;
 
 import com.ehr.webstore.domain.Product;
 import com.ehr.webstore.domain.repository.ProductRepository;
+import com.ehr.webstore.exception.ProductNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -53,7 +54,8 @@ public class InMemoryProductRepository implements ProductRepository {
             }
         }
         if (productById == null) {
-            throw new IllegalArgumentException("Product with id: " + productId + " does not exist.");
+            throw new ProductNotFoundException(productId);
+//            throw new IllegalArgumentException("Product with id: " + productId + " does not exist.");
         }
         return productById;
     }

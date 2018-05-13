@@ -3,6 +3,7 @@ package com.ehr.webstore.controller;
 
 import com.ehr.webstore.domain.Product;
 import com.ehr.webstore.exception.NoProductsFoundUnderCategoryException;
+import com.ehr.webstore.exception.ProductNotFoundException;
 import com.ehr.webstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -94,5 +96,14 @@ public class ProductController {
         binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category", "unitsInStock", "condition", "productImage");
     }
 
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ModelAndView handleError(HttpServletRequest request, ProductNotFoundException exception) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("invalidProductId", exception.getProductId());
+        modelAndView.addObject("exception", exception);
+        modelAndView.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
+        modelAndView.setViewName("productNotFound");
+        return modelAndView;
+    }
 
 }
