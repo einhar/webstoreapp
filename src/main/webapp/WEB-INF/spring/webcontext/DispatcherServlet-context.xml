@@ -13,6 +13,9 @@
 
     <mvc:annotation-driven enable-matrix-variables="true"/>
     <mvc:resources  location="/resources/"  mapping="/resource/**"/>
+    <mvc:interceptors>
+        <bean class="com.ehr.webstore.interceptor.PerformanceMonitorInterceptor"/>
+    </mvc:interceptors>
     <context:component-scan base-package="com.ehr" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
