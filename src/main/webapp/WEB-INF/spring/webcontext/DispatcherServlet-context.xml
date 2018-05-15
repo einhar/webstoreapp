@@ -15,8 +15,15 @@
     <mvc:resources  location="/resources/"  mapping="/resource/**"/>
     <mvc:interceptors>
         <bean class="com.ehr.webstore.interceptor.PerformanceMonitorInterceptor"/>
+        <bean class="com.ehr.webstore.interceptor.AuditingInterceptor"/>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
     </mvc:interceptors>
     <context:component-scan base-package="com.ehr" />
+
+    <mvc:default-servlet-handler/> <!-- remove if not working-->
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
@@ -24,7 +31,9 @@
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="messages"/>
+        <property name="basename" value="messages" />
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="fallbackToSystemLocale" value="false"/>
     </bean>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -62,7 +71,6 @@
         <property name="ignoreAcceptHeader" value="true"/>
         <property name="useJaf" value="false"/>
         <property name="defaultContentType" value="text/html" />
-
         <property name="mediaTypes">
             <map>
                 <entry key="json" value="application/json;charset=UTF-8"/>
@@ -70,6 +78,11 @@
                 <entry key="html" value="text/html;charset=UTF-8"/>
             </map>
         </property>
+    </bean>
+
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="en"/>
     </bean>
 
 </beans>
