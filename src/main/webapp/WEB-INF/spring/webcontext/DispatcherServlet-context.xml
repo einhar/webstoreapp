@@ -16,6 +16,11 @@
     <mvc:interceptors>
         <bean class="com.ehr.webstore.interceptor.PerformanceMonitorInterceptor"/>
         <bean class="com.ehr.webstore.interceptor.AuditingInterceptor"/>
+        <bean class="com.ehr.webstore.interceptor.PromoCodeInterceptor">
+            <property name="promoCode" value="EXTRA"/>
+            <property name="errorRedirect" value="invalidPromoCode"/>
+            <property name="offerRedirect" value="products"/>
+        </bean>
         <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>
         </bean>
