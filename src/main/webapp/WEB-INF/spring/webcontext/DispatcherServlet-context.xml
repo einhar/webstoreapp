@@ -11,7 +11,7 @@
             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-    <mvc:annotation-driven enable-matrix-variables="true"/>
+    <mvc:annotation-driven enable-matrix-variables="true" validator="validator"/>
     <mvc:resources  location="/resources/"  mapping="/resource/**"/>
     <mvc:interceptors>
         <bean class="com.ehr.webstore.interceptor.PerformanceMonitorInterceptor"/>
@@ -88,6 +88,10 @@
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
         <property name="defaultLocale" value="en"/>
+    </bean>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="validationMessageSource" ref="messageSource"/>
     </bean>
 
 </beans>
