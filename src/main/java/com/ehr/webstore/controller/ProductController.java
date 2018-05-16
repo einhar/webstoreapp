@@ -5,6 +5,7 @@ import com.ehr.webstore.domain.Product;
 import com.ehr.webstore.exception.NoProductsFoundUnderCategoryException;
 import com.ehr.webstore.exception.ProductNotFoundException;
 import com.ehr.webstore.service.ProductService;
+import com.ehr.webstore.validator.ProductValidator;
 import com.ehr.webstore.validator.UnitsInStockValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,9 @@ public class ProductController {
 
     @Autowired
     UnitsInStockValidator unitsInStockValidator;
+
+    @Autowired
+    ProductValidator productValidator;
 
     @RequestMapping
     public String list(Model model) {
@@ -110,7 +114,7 @@ public class ProductController {
     public void initialiseBinder(WebDataBinder binder) {
         binder.setDisallowedFields("unitsInOrder", "discontinued");
         binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category", "unitsInStock", "condition", "productImage", "lang");
-        binder.setValidator(unitsInStockValidator);
+        binder.setValidator(productValidator);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

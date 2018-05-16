@@ -94,4 +94,12 @@
         <property name="validationMessageSource" ref="messageSource"/>
     </bean>
 
+    <bean id="productValidator" class="com.ehr.webstore.validator.ProductValidator">
+        <property name="springValidators">
+            <set>
+                <ref bean="unitsInStockValidator"/>
+            </set>
+        </property>
+    </bean>
+
 </beans>
