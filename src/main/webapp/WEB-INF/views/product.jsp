@@ -14,6 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="WEB-INF/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+        <script src="/resource/js/controllers.js"></script>
         <title>Products</title>
     </head>
     <body>
@@ -24,7 +26,7 @@
             </div>
         </div>
     </section>
-    <section class="container">
+    <section class="container" ng-app="cartApp">
         <div class="row">
             <div class="col-md-5">
                 <h3>${product.name}</h3>
@@ -45,13 +47,16 @@
                     <strong>Units in stock</strong>: ${product.unitsInStock}
                 </p>
                 <h4>${product.unitPrice} $</h4>
-                <p>
-                    <a href="#" class="btn btn-warning btn-large"> <span
-                            class="glyphicon-shopping-cart glyphicon"></span> Order now
-                    </a> <a href="<spring:url value="/products" />" class="btn btn-default">
-                    <span class="glyphicon-hand-left glyphicon"></span> Back
-                </a>
-
+                <p ng-controller="cartCtrl">
+                    <a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productId}')">
+                        <span class="glyphicon-shopping-cart glyphicon"></span> Order now
+                    </a>
+                    <a href="<spring:url value="/cart" />" class="btn btn-default">
+                        <span class="glyphicon-hand-right glyphicon"></span> Cart
+                    </a>
+                    <a href="<spring:url value="/products" />" class="btn btn-default">
+                        <span class="glyphicon-hand-left glyphicon"></span> Back
+                    </a>
                 </p>
 
             </div>
