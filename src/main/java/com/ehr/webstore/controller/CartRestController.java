@@ -32,27 +32,23 @@ public class CartRestController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody Cart create(@RequestBody Cart cart) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 11111111");
         return  cartService.create(cart);
     }
 
     @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
     public @ResponseBody Cart read(@PathVariable(value = "cartId") String cartId) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 2");
         return cartService.read(cartId);
     }
 
     @RequestMapping(value = "/{cartId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void update(@PathVariable(value = "cartId") String cartId, @RequestBody Cart cart) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 3");
         cartService.update(cartId, cart);
     }
 
     @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable(value = "cartId") String cartId) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 4");
         cartService.delete(cartId);
     }
 
@@ -60,7 +56,6 @@ public class CartRestController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addItem(@PathVariable String productId, HttpServletRequest request) {
 
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 5");
         String sessionId = request.getSession(true).getId();
         Cart cart = cartService.read(sessionId);
         if(cart== null) {
@@ -81,7 +76,6 @@ public class CartRestController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void removeItem(@PathVariable String productId, HttpServletRequest request) {
 
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 6");
         String sessionId = request.getSession(true).getId();
         Cart cart = cartService.read(sessionId);
         if(cart== null) {
@@ -101,12 +95,10 @@ public class CartRestController {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,  reason="Invalid request, check sending data. handleClientErrors();")
     public void handleClientErrors(Exception ex) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 7");
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason="Internal server error. handleServerErrors();")
     public void handleServerErrors(Exception ex) {
-        System.out.println("Jestem tutaj. ----------------------------------------------------- 8");
     }
 }

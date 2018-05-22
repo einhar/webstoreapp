@@ -81,3 +81,4 @@ fabric.properties
 /src/main/webapp/WEB-INF/css/bootstrap.min.css
 /.idea/artifacts/webstore_war_exploded.xml
 /.idea/artifacts/webstore_war.xml
+target/webstore-1.0-SNAPSHOT/resources/images/1000.png
