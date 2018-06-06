@@ -28,14 +28,14 @@
 
 <section class="container">
     <div class="row">
-        <c:forEach items="${customers}" var="customer">
+        <c:forEach items="${customers}" var="customerExpired">
             <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                 <div class="thumbnail">
                     <div class="caption">
-                        <h3>${customer.name}</h3>
-                        <p>${customer.address}</p>
-                        <p>Number of orders: ${customer.noOfOrdersMade}</p>
-                        <p>ID: ${customer.customerId}</p>
+                        <h3>${customerExpired.name}</h3>
+                        <p>${customerExpired.address}</p>
+                        <p>Number of orders: ${customerExpired.noOfOrdersMade}</p>
+                        <p>ID: ${customerExpired.customerId}</p>
                     </div>
                 </div>
             </div>

@@ -21,25 +21,21 @@ public class PerformanceMonitorInterceptor implements HandlerInterceptor {
         stopWatch.start(handler.toString());
         stopWatchLocal.set(stopWatch);
 
-        logger.info("(START) Processing request to URL path: " + getURLPath(request));
-        logger.info("(START) Processing request has started at: " + getCurrentTime());
+        logger.info("(START) Processing request to URL path: " + getURLPath(request).toString() + " " + " at: " + getCurrentTime());
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        logger.info("(STOP) Processing request to URL path: " + getURLPath(request));
-        logger.info("(STOP) Processing request has stopped at: " + getCurrentTime());
+        logger.info("(STOP) Processing request to URL path: " + getURLPath(request).toString() + " " + " at: " + getCurrentTime());
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request,	HttpServletResponse response, Object handler, Exception exception) throws Exception {
         StopWatch stopWatch = stopWatchLocal.get();
         stopWatch.stop();
-        logger.info("(COMPLITED) Processing request to URL path: " + getURLPath(request));
-        logger.info("(COMPLITED) Processing request time: " + stopWatch.getTotalTimeMillis()+ " ms");
+        logger.info("(COMPLETED) Processing request to URL path: " + getURLPath(request).toString() + " | Processing request time: " + stopWatch.getTotalTimeMillis()+ " ms");
         stopWatchLocal.set(null);
-        logger.info("=======================================================");
     }
 
     private String getURLPath(HttpServletRequest request) {
@@ -50,7 +46,7 @@ public class PerformanceMonitorInterceptor implements HandlerInterceptor {
     }
 
     private String getCurrentTime() {
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy 'o' hh:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy 'at' hh:mm:ss");
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         return formatter.format(calendar.getTime());

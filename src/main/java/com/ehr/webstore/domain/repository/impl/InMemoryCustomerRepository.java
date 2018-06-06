@@ -1,6 +1,6 @@
 package com.ehr.webstore.domain.repository.impl;
 
-import com.ehr.webstore.domain.Customer;
+import com.ehr.webstore.domain.expired.Customer_expired;
 import com.ehr.webstore.domain.repository.CustomerRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,38 +10,38 @@ import java.util.List;
 @Repository
 public class InMemoryCustomerRepository implements CustomerRepository {
 
-    private List<Customer> listOfCustomers = new ArrayList<>();
+    private List<Customer_expired> listOfCustomerExpireds = new ArrayList<>();
 
     public InMemoryCustomerRepository() {
-        Customer customer1 = new Customer("C123", "John", "NY");
-        customer1.setNoOfOrdersMade(10);
+        Customer_expired customerExpired1 = new Customer_expired("C123", "John", "NY");
+        customerExpired1.setNoOfOrdersMade(10);
 
-        Customer customer2 = new Customer("C124", "Lisa", "Paris");
-        customer2.setNoOfOrdersMade(50);
+        Customer_expired customerExpired2 = new Customer_expired("C124", "Lisa", "Paris");
+        customerExpired2.setNoOfOrdersMade(50);
 
-        listOfCustomers.add(customer1);
-        listOfCustomers.add(customer2);
+        listOfCustomerExpireds.add(customerExpired1);
+        listOfCustomerExpireds.add(customerExpired2);
     }
 
     @Override
-    public List<Customer> getAllCustomers() {
-        return listOfCustomers;
+    public List<Customer_expired> getAllCustomers() {
+        return listOfCustomerExpireds;
     }
 
     @Override
-    public Customer getCustomerById(String customerId) {
-        Customer customerById = null;
-        for (Customer customer : listOfCustomers) {
-            if (customer != null &&
-                    customer.getCustomerId() != null &&
-                    customer.getCustomerId().equals(customerId)) {
-                customerById = customer;
+    public Customer_expired getCustomerById(String customerId) {
+        Customer_expired customerExpiredById = null;
+        for (Customer_expired customerExpired : listOfCustomerExpireds) {
+            if (customerExpired != null &&
+                    customerExpired.getCustomerId() != null &&
+                    customerExpired.getCustomerId().equals(customerId)) {
+                customerExpiredById = customerExpired;
                 break;
             }
         }
-        if (customerById == null) {
-            throw new IllegalArgumentException("Customer with id: " + customerId + "does not exist.");
+        if (customerExpiredById == null) {
+            throw new IllegalArgumentException("Customer_expired with id: " + customerId + "does not exist.");
         }
-        return customerById;
+        return customerExpiredById;
     }
 }

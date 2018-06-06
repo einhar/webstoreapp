@@ -1,12 +1,12 @@
 package com.ehr.webstore.service;
 
-import com.ehr.webstore.domain.Customer;
+import com.ehr.webstore.domain.expired.Customer_expired;
 
 import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> getAllCustomers();
+    List<Customer_expired> getAllCustomers();
 
-    Customer getCustomerById(String customerId);
+    Customer_expired getCustomerById(String customerId);
 }

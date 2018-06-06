@@ -1,24 +1,42 @@
 package com.ehr.webstore.service.impl;
 
-import com.ehr.webstore.domain.Product;
-import com.ehr.webstore.domain.repository.ProductRepository;
-import com.ehr.webstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ehr.webstore.domain.Order;
+import com.ehr.webstore.domain.Product;
+import com.ehr.webstore.domain.repository.OrderRepository;
+import com.ehr.webstore.domain.repository.ProductRepository;
+import com.ehr.webstore.service.CartService;
+import com.ehr.webstore.service.OrderService;
+
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private ProductRepository productRepository;
 
-    @Override
-    public void processOrder(String productId, int count){
-        Product productById = null;
-        productById = productRepository.getProductById(productId);
-        if (productById.getUnitsInStock() < count) {
-            throw new IllegalArgumentException("There is no enough article in warehouse. Current number in stock: " + productById.getUnitsInStock());
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private CartService cartService;
+
+
+    public void processOrder(String productId, long quantity) {
+        Product productById = productRepository.getProductById(productId);
+
+        if(productById.getUnitsInStock() < quantity){
+            throw new IllegalArgumentException("Out of Stock. Available Units in stock"+ productById.getUnitsInStock());
         }
-        productById.setUnitsInStock(productById.getUnitsInStock() - count);
+
+        productById.setUnitsInStock(productById.getUnitsInStock() - quantity);
     }
+
+    public Long saveOrder(Order order) {
+        Long orderId = orderRepository.saveOrder(order);
+        cartService.delete(order.getCart().getCartId());
+        return orderId;
+    }
+
 }

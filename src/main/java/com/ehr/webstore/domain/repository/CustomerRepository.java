@@ -1,13 +1,13 @@
 package com.ehr.webstore.domain.repository;
 
-import com.ehr.webstore.domain.Customer;
+import com.ehr.webstore.domain.expired.Customer_expired;
 
 import java.util.List;
 
 public interface CustomerRepository {
 
 
-    List<Customer> getAllCustomers();
+    List<Customer_expired> getAllCustomers();
 
-    Customer getCustomerById(String customerId);
+    Customer_expired getCustomerById(String customerId);
 }

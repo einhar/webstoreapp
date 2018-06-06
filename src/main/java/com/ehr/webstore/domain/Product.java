@@ -1,11 +1,13 @@
 package com.ehr.webstore.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 import com.ehr.webstore.validator.Category;
 import com.ehr.webstore.validator.ProductId;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.*;
@@ -13,7 +15,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
-public class Product {
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 3678107792576131001L;
 
     @Pattern(regexp = "P[0-9]+", message = "{Pattern.Product.productId.validation}")
     @ProductId

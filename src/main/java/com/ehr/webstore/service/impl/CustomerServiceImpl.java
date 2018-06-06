@@ -1,6 +1,6 @@
 package com.ehr.webstore.service.impl;
 
-import com.ehr.webstore.domain.Customer;
+import com.ehr.webstore.domain.expired.Customer_expired;
 import com.ehr.webstore.domain.repository.CustomerRepository;
 import com.ehr.webstore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public List<Customer> getAllCustomers() {
+    public List<Customer_expired> getAllCustomers() {
         return customerRepository.getAllCustomers();
     }
 
     @Override
-    public Customer getCustomerById(String customerId) {
+    public Customer_expired getCustomerById(String customerId) {
         return customerRepository.getCustomerById(customerId);
     }
 }
