@@ -144,6 +144,38 @@
             <version>2.3.3.RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-extras</artifactId>
+            <version>3.0.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
+            <scope>compile</scope>
+        </dependency>
+<!--
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+            <scope>compile</scope>
+        </dependency>
+-->
+
     </dependencies>
 
     <build>

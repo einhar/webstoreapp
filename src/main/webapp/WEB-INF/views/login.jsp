@@ -13,19 +13,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="WEB-INF/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <title>Login</title>
     </head>
     <body>
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Products</h1>
-                    <p>Add products</p>
-                </div>
-            </div>
-        </section>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">

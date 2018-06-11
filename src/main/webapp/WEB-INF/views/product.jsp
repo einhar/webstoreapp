@@ -12,20 +12,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet"
+              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="WEB-INF/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
         <script src="/resource/js/controllers.js"></script>
         <title>Products</title>
     </head>
     <body>
-    <section>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Products</h1>
-            </div>
-        </div>
-    </section>
     <section class="container" ng-app="cartApp">
         <div class="row">
             <div class="col-md-5">
